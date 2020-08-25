@@ -60,7 +60,7 @@ public class OrderItemServiceImpl implements OrderItemService  {
 	public List<OrderItemVO> getOrderItemList(List<Long> productCodes) throws ProductCodeNotFoundException {
 		List<OrderItemVO> itemListVO=new ArrayList<OrderItemVO>();
 		List<OrderItemEO> itemListEO=orderItemRepository.findByProductCodeIn(productCodes);
-			if (Objects.nonNull(itemListEO)) {
+			if (itemListEO.size()!=0) {
 				itemListVO=ItemMapper.INSTANCE.fromItemListEOToItemListVO(itemListEO);
 			}else {
 				throw new ProductCodeNotFoundException("Product code not found");

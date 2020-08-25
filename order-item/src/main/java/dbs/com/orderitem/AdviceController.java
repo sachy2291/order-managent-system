@@ -17,9 +17,7 @@ public class AdviceController {
 	@ExceptionHandler(value = ProductCodeNotFoundException.class)
 	public ResponseEntity<ProductCodeNotFound> handleGenericNotFoundException(ProductCodeNotFound e,
 			WebRequest request) {
-
 		ProductCodeNotFound error = new ProductCodeNotFound(new Date(), e.getMessage(), request.getDescription(false));
-
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
